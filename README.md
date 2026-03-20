@@ -17,7 +17,11 @@ ecommerce-data-cleaning/
 │   └── raw/
 │       └── ecommerce_customer_data_custom_ratios.csv
 ├── notebooks/
-│   └── 01_cleaning.ipynb    # Data cleaning notebook
+│   ├── 01_cleaning.ipynb    # Data cleaning notebook
+│   ├── 03visual.ipynb       # Data visualization notebook
+│   └── data/
+│       └── cleaned/
+│           └── ecommerce_customer_data_cleaned.csv
 ├── requirements.txt
 └── README.md
 ```
@@ -94,6 +98,15 @@ pip install -r requirements.txt
 - Cleaned dataset with resolved data quality issues
 - Data quality summary report
 - Documentation of all cleaning decisions made
+
+## Visualizations & Insights
+
+The `notebooks/03visual.ipynb` notebook explores the cleaned dataset to uncover key business insights regarding:
+- **Demographics**: Understanding the active customer base through age and gender distributions.
+- **Revenue Drivers**: Identifying high-value product categories by analyzing total revenue and purchase amounts.
+- **Customer Retention & Returns**: Exploring customer churn rate and the percentage of returned products across different categories to inform retention strategies.
+
+To view the charts and analysis, run the notebook sequentially.
 
 ## Data Dictionary
 
