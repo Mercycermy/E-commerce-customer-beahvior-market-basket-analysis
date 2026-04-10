@@ -1,133 +1,220 @@
-# E-commerce Customer Data Cleaning Project
+# 🇪🇹 Ethiopian Economic Data Analysis (2010–2024)
 
-This project focuses on cleaning and validating e-commerce customer transaction data for downstream analysis.
+## Project Overview
 
-## Dataset Overview
+This project analyzes Ethiopia’s macroeconomic performance using real-world data from the World Bank and IMF. It combines economic theory with data science techniques to uncover insights, test relationships, and forecast future trends.
 
-The dataset contains customer transaction records with the following key information:
-- **Customer Details**: ID, Name, Age, Gender
-- **Transaction Data**: Purchase Date, Product Category, Price, Quantity, Total Amount
-- **Payment Info**: Payment Method, Returns, Churn Status
+The goal is to move beyond basic analysis and answer key economic questions using data-driven methods.
 
-## Current Project Structure
+---
 
+## Objectives
+
+- Understand the structure and trends of Ethiopia’s economy
+- Analyze relationships between key macroeconomic variables
+- Test economic theories such as the Phillips Curve
+- Identify drivers of GDP growth
+- Forecast future economic indicators
+- Translate data into meaningful economic insights
+
+---
+
+## 📦 Data Sources
+
+### World Bank
+- https://data.worldbank.org/country/ethiopia
+
+### IMF
+- https://data.imf.org/
+
+---
+
+## Variables Used
+
+### Core Indicators
+- GDP Growth (annual %) → `NY.GDP.MKTP.KD.ZG`
+- Inflation (CPI, %) → `FP.CPI.TOTL.ZG`
+- Unemployment (%) → `SL.UEM.TOTL.ZS`
+- Population → `SP.POP.TOTL`
+
+### Advanced Indicators
+- Gross Capital Formation (% of GDP) → `NE.GDI.TOTL.ZS`
+- Exports (% of GDP) → `NE.EXP.GNFS.ZS`
+- Imports (% of GDP) → `NE.IMP.GNFS.ZS`
+- Agriculture Value Added (% of GDP) → `NV.AGR.TOTL.ZS`
+- Industry Value Added (% of GDP) → `NV.IND.TOTL.ZS`
+- Services Value Added (% of GDP) → `NV.SRV.TOTL.ZS`
+- Exchange Rate (IMF / National Bank)
+
+---
+
+## Project Structure
 ```text
-ecommerce-data-cleaning/
+ethiopia-economic-analysis/
+│
 ├── data/
-│   └── raw/
-│       └── ecommerce_customer_data_custom_ratios.csv
+│   ├── raw/              # Original downloaded datasets
+│   ├── cleaned/          # Processed datasets
+│
 ├── notebooks/
-│   ├── 01_cleaning.ipynb    # Data cleaning notebook
-│   ├── 03visual.ipynb       # Data visualization notebook
-│   ├── 04_final_report.ipynb # Exec report & exploratory analysis
-│   └── data/
-│       └── cleaned/
-│           └── ecommerce_customer_data_cleaned.csv
-├── requirements.txt
-└── README.md
+│   ├── 01_data_cleaning.ipynb
+│   ├── 02_eda.ipynb
+│   ├── 03_regression.ipynb
+│   ├── 04_forecasting.ipynb
+│
+├── dashboard/
+│   └── (Power BI / Tableau / Streamlit files)
+│
+├── reports/
+│   └── final_report.pdf
+│
+├── README.md
+└── requirements.txt
+
+---
+
+## Analysis Breakdown
+
+### 1. Exploratory Data Analysis (EDA)
+
+- Trend analysis (2010–2024)
+- Economic shocks (e.g., COVID-19, inflation spikes)
+- Correlation analysis
+
+**Visualizations:**
+- Line charts (GDP, inflation, unemployment)
+- Scatter plots
+- Heatmaps
+
+---
+
+### 2. Econometric Modeling
+
+#### Model 1: GDP Growth Model
+
 ```
 
-## Data Cleaning Process
+GDP = β0 + β1(Inflation) + β2(Unemployment) + β3(Investment) + ε
 
-### Step-by-Step Cleaning Workflow
+```
 
-1. **Data Loading & Exploration**
-   - Load CSV data using pandas
-   - Inspect data structure, types, and basic statistics
-   - Identify columns and data patterns
+ Purpose:
+- Identify key drivers of economic growth
 
-2. **Missing Value Analysis**
-   - Check for null values across all columns
-   - Calculate missing value percentages
-   - Visualize missing data patterns
+---
 
-3. **Handle Duplicate Columns**
-   - Remove redundant 'Customer Age' column (duplicate of 'Age')
-   - Streamline dataset structure
+#### Model 2: Phillips Curve
 
-4. **Data Type Conversions**
-   - Convert 'Purchase Date' to datetime format
-   - Ensure numeric columns are properly typed
-   - Handle conversion errors gracefully
+```
 
-5. **Missing Value Treatment**
-   - Fill missing 'Returns' values with 0 (business assumption)
-   - Document assumptions made during cleaning
+Inflation = β0 + β1(Unemployment) + ε
 
-6. **Data Consistency Checks**
-   - Validate categorical values (Product Category, Payment Method, Gender)
-   - Check for logical inconsistencies (negative prices, invalid ages)
-   - Identify data entry errors
+```
 
-7. **Business Logic Validation**
-   - Verify Total Purchase Amount = Product Price × Quantity
-   - Flag inconsistent calculations for review
+ Purpose:
+- Test whether inflation and unemployment have an inverse relationship in Ethiopia
 
-8. **Data Quality Fixes**
-   - Correct obvious gender mismatches (e.g., "Christine" marked as "Male")
-   - Standardize categorical values
+---
 
-9. **Outlier Detection**
-   - Use IQR method to identify outliers in price, quantity, and amounts
-   - Visualize distributions with histograms and boxplots
+### 3. Forecasting
 
-10. **Final Validation & Export**
-    - Generate data quality summary report
-    - Export cleaned dataset for analysis
+Models used:
+- ARIMA
+- Prophet
 
-### Key Data Quality Issues Identified
+Forecast:
+- GDP growth
+- Inflation rate
+- Unemployment trends
 
-- **Duplicate Columns**: 'Customer Age' and 'Age' contain identical data
-- **Missing Values**: Some 'Returns' values are missing
-- **Gender Inconsistencies**: Names don't match assigned genders in some records
-- **Business Logic**: Need to verify calculation accuracy (Price × Quantity = Total)
+---
 
-## Getting Started
+### 4. Policy Impact Analysis
 
-### Prerequisites
-```bash
+- Analyze effects of macroeconomic policies
+- Example:
+  - Impact of money supply on inflation
+  - Exchange rate depreciation and inflation
+
+---
+
+##Tools & Technologies
+
+- Python
+  - Pandas
+  - NumPy
+  - Matplotlib / Seaborn
+- Statsmodels (econometrics)
+- Scikit-learn
+- Power BI / Tableau / Streamlit
+- Excel (data cleaning & validation)
+
+---
+
+## How to Run the Project
+
+1. Clone the repository:
+```
+
+git clone [https://github.com/your-username/ethiopia-economic-analysis.git](https://github.com/mercycermy/ethiopia_economic_analysis.git)
+
+```
+
+2. Install dependencies:
+```
+
 pip install -r requirements.txt
+
 ```
 
-### Running the Cleaning Process
-1. Open `notebooks/01_cleaning.ipynb`
-2. Run cells sequentially following the 10-step process
-3. Each step includes explanations and validation checks
-4. Monitor output for data quality issues and corrections
+3. Run notebooks:
+```
 
-### Expected Outputs
-- Cleaned dataset with resolved data quality issues
-- Data quality summary report
-- Documentation of all cleaning decisions made
+jupyter notebook
 
-## Visualizations, Insights & Executive Report
+```
 
-The `notebooks/03visual.ipynb` notebook explores the cleaned dataset to uncover key business insights, which are then compiled into a structured narrative in `notebooks/04_final_report.ipynb`. Key areas covered include:
-- **Demographics**: Understanding the active customer base through age and gender distributions.
-- **Revenue Drivers**: Identifying high-value product categories by analyzing total revenue and purchase amounts.
-- **Customer Retention & Returns**: Exploring customer churn rate and the percentage of returned products across different categories to inform retention strategies.
-- **Correlation Analysis**: Finding variables that strongly correlate with purchase amounts and churn.
+---
 
-To view the charts and narrative analysis, open and run the `notebooks/04_final_report.ipynb` notebook.
+##  Key Insights (Example)
 
-## Data Dictionary
+- Inflation trends show instability in developing economies
+- Weak or inconsistent Phillips Curve relationship
+- GDP growth increasingly driven by services sector
+- Exchange rate plays a major role in inflation dynamics
 
-| Column | Description | Data Type | Notes |
-|--------|-------------|-----------|-------|
-| Customer ID | Unique customer identifier | Integer | Primary key |
-| Purchase Date | Transaction timestamp | Datetime | Format: YYYY-MM-DD HH:MM:SS |
-| Product Category | Product classification | String | Electronics, Home, Clothing, Books |
-| Product Price | Unit price of product | Float | In currency units |
-| Quantity | Number of items purchased | Integer | Must be positive |
-| Total Purchase Amount | Total transaction value | Float | Should equal Price × Quantity |
-| Payment Method | Payment type used | String | Credit Card, PayPal, Cash |
-| Age | Customer age in years | Integer | Cleaned duplicate of Customer Age |
-| Returns | Return indicator | Float | 0.0 = No return, 1.0 = Returned |
-| Customer Name | Customer full name | String | Used for gender validation |
-| Gender | Customer gender | String | Male, Female |
-| Churn | Customer churn indicator | Integer | 0 = Active, 1 = Churned |
+---
 
-## Notes
-- This is a focused data cleaning project - analysis notebooks have been removed
-- Run notebook cells manually to maintain control over the cleaning process
-- All cleaning steps include detailed explanations and business logic validation
+## Key Takeaways
+
+This project demonstrates:
+
+- Application of economic theory using real data
+- Strong data analysis and visualization skills
+- Ability to interpret macroeconomic trends
+- Forecasting and predictive modeling capability
+- Policy-relevant economic insights
+
+---
+
+## Author
+
+**Mihret Tsegaye**  
+Economics Student | Data Enthusiast | Future Economist  
+
+---
+
+## Future Improvements
+
+- Add real-time data pipeline using APIs
+- Build interactive dashboard (Streamlit)
+- Include more macro variables (debt, interest rate)
+- Expand to comparative country analysis
+
+---
+
+## If you like this project
+
+Give it a star ⭐ and share your feedback!
+
+```
