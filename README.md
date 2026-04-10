@@ -1,220 +1,78 @@
-# 🇪🇹 Ethiopian Economic Data Analysis (2010–2024)
+# E-commerce Customer Behavior & Market Basket Analysis
 
 ## Project Overview
 
-This project analyzes Ethiopia’s macroeconomic performance using real-world data from the World Bank and IMF. It combines economic theory with data science techniques to uncover insights, test relationships, and forecast future trends.
+This repository analyzes e-commerce customer behavior and shopping patterns using a transaction-style dataset.
 
-The goal is to move beyond basic analysis and answer key economic questions using data-driven methods.
+The workflow focuses on:
+- Cleaning and preparing raw customer/order data
+- Exploring behavioral patterns through visualization
+- Summarizing actionable findings in a final report notebook
 
----
+## Repository Structure
 
-## Objectives
-
-- Understand the structure and trends of Ethiopia’s economy
-- Analyze relationships between key macroeconomic variables
-- Test economic theories such as the Phillips Curve
-- Identify drivers of GDP growth
-- Forecast future economic indicators
-- Translate data into meaningful economic insights
-
----
-
-## 📦 Data Sources
-
-### World Bank
-- https://data.worldbank.org/country/ethiopia
-
-### IMF
-- https://data.imf.org/
-
----
-
-## Variables Used
-
-### Core Indicators
-- GDP Growth (annual %) → `NY.GDP.MKTP.KD.ZG`
-- Inflation (CPI, %) → `FP.CPI.TOTL.ZG`
-- Unemployment (%) → `SL.UEM.TOTL.ZS`
-- Population → `SP.POP.TOTL`
-
-### Advanced Indicators
-- Gross Capital Formation (% of GDP) → `NE.GDI.TOTL.ZS`
-- Exports (% of GDP) → `NE.EXP.GNFS.ZS`
-- Imports (% of GDP) → `NE.IMP.GNFS.ZS`
-- Agriculture Value Added (% of GDP) → `NV.AGR.TOTL.ZS`
-- Industry Value Added (% of GDP) → `NV.IND.TOTL.ZS`
-- Services Value Added (% of GDP) → `NV.SRV.TOTL.ZS`
-- Exchange Rate (IMF / National Bank)
-
----
-
-## Project Structure
 ```text
-ethiopia-economic-analysis/
-│
+E-commerce-customer-beahvior-market-basket-analysis/
 ├── data/
-│   ├── raw/              # Original downloaded datasets
-│   ├── cleaned/          # Processed datasets
-│
+│   └── raw/
+│       └── ecommerce_customer_data_custom_ratios.csv
 ├── notebooks/
-│   ├── 01_data_cleaning.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_regression.ipynb
-│   ├── 04_forecasting.ipynb
-│
-├── dashboard/
-│   └── (Power BI / Tableau / Streamlit files)
-│
-├── reports/
-│   └── final_report.pdf
-│
-├── README.md
-└── requirements.txt
-
----
-
-## Analysis Breakdown
-
-### 1. Exploratory Data Analysis (EDA)
-
-- Trend analysis (2010–2024)
-- Economic shocks (e.g., COVID-19, inflation spikes)
-- Correlation analysis
-
-**Visualizations:**
-- Line charts (GDP, inflation, unemployment)
-- Scatter plots
-- Heatmaps
-
----
-
-### 2. Econometric Modeling
-
-#### Model 1: GDP Growth Model
-
+│   ├── 01_cleaning.ipynb
+│   ├── 03visual.ipynb
+│   ├── 04_final_report.ipynb
+│   └── data/
+│       └── cleaned/
+│           └── ecommerce_customer_data_cleaned.csv
+├── requirements.txt
+└── README.md
 ```
 
-GDP = β0 + β1(Inflation) + β2(Unemployment) + β3(Investment) + ε
+## Notebooks
 
-```
+- `notebooks/01_cleaning.ipynb`  
+  Cleans and prepares the raw dataset for analysis.
 
- Purpose:
-- Identify key drivers of economic growth
+- `notebooks/03visual.ipynb`  
+  Performs exploratory analysis and visualizations of customer behavior and basket patterns.
 
----
+- `notebooks/04_final_report.ipynb`  
+  Consolidates insights, observations, and conclusions.
 
-#### Model 2: Phillips Curve
+## Data Files
 
-```
+- Raw input: `data/raw/ecommerce_customer_data_custom_ratios.csv`
+- Cleaned output: `notebooks/data/cleaned/ecommerce_customer_data_cleaned.csv`
 
-Inflation = β0 + β1(Unemployment) + ε
-
-```
-
- Purpose:
-- Test whether inflation and unemployment have an inverse relationship in Ethiopia
-
----
-
-### 3. Forecasting
-
-Models used:
-- ARIMA
-- Prophet
-
-Forecast:
-- GDP growth
-- Inflation rate
-- Unemployment trends
-
----
-
-### 4. Policy Impact Analysis
-
-- Analyze effects of macroeconomic policies
-- Example:
-  - Impact of money supply on inflation
-  - Exchange rate depreciation and inflation
-
----
-
-##Tools & Technologies
+## Tech Stack
 
 - Python
-  - Pandas
-  - NumPy
-  - Matplotlib / Seaborn
-- Statsmodels (econometrics)
+- Jupyter Notebook
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- SciPy
 - Scikit-learn
-- Power BI / Tableau / Streamlit
-- Excel (data cleaning & validation)
+- mlxtend
 
----
+## Setup
 
-## How to Run the Project
+1. Clone this repository.
+2. Create and activate a Python environment (recommended).
+3. Install dependencies from `requirements.txt`.
+4. Launch Jupyter and run notebooks in order.
 
-1. Clone the repository:
-```
+## Typical Workflow
 
-git clone [https://github.com/your-username/ethiopia-economic-analysis.git](https://github.com/mercycermy/ethiopia_economic_analysis.git)
+1. Run `01_cleaning.ipynb` to generate cleaned data.
+2. Run `03visual.ipynb` for visual exploration.
+3. Run `04_final_report.ipynb` for the final summary.
 
-```
+## Notes
 
-2. Install dependencies:
-```
-
-pip install -r requirements.txt
-
-```
-
-3. Run notebooks:
-```
-
-jupyter notebook
-
-```
-
----
-
-##  Key Insights (Example)
-
-- Inflation trends show instability in developing economies
-- Weak or inconsistent Phillips Curve relationship
-- GDP growth increasingly driven by services sector
-- Exchange rate plays a major role in inflation dynamics
-
----
-
-## Key Takeaways
-
-This project demonstrates:
-
-- Application of economic theory using real data
-- Strong data analysis and visualization skills
-- Ability to interpret macroeconomic trends
-- Forecasting and predictive modeling capability
-- Policy-relevant economic insights
-
----
+- The folder name contains a typo (`beahvior`) and is kept as-is to match the existing repository name.
+- If notebook paths differ on your machine, update relative paths inside notebook cells accordingly.
 
 ## Author
 
-**Mihret Tsegaye**  
-Economics Student | Data Enthusiast | Future Economist  
-
----
-
-## Future Improvements
-
-- Add real-time data pipeline using APIs
-- Build interactive dashboard (Streamlit)
-- Include more macro variables (debt, interest rate)
-- Expand to comparative country analysis
-
----
-
-## If you like this project
-
-Give it a star ⭐ and share your feedback!
-
-```
+Maintained by the repository owner.
